@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import Artists from './artists';
 
 const rootReducer = combineReducers({
-  Auth: {"a": "hello"}
+  artists: Artists
 })
 
 export default rootReducer;
