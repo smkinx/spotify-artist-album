@@ -4,6 +4,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import SearchIcon from '@material-ui/icons/Search';
 import queryString from 'query-string';
 import ArtistCard from './artistCard';
+import Grid from '@material-ui/core/Grid';
 
 class Search extends React.Component {
 
@@ -39,45 +40,44 @@ class Search extends React.Component {
 
     if(this.accessToken !== "") {
 
-
+      const searchBar = () => {
+        return (
+          <TextField id="outlined-basic"
+            placeholder="Search for an artist"
+            variant="outlined"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              )
+            }}
+            value={this.state.search}
+            onChange={this.handleChange}
+            />
+        )
+      }
       if(this.props.artists.items) {
-        const artistRender = this.props.artists.items.map((artist) => {
-          return <ArtistCard key={artist.name} {...artist}/>
+        let artistRender = this.props.artists.items.map((artist, index) => {
+          return (
+            <Grid key={`${artist.name}_${index}`} item xl={2} lg={3} sm={6} xs={6}>
+              <ArtistCard {...artist}/>
+            </Grid>
+          )
         })
+
         return (
           <div>
-            <TextField id="outlined-basic"
-              placeholder="Search for an artist"
-              variant="outlined"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon />
-                  </InputAdornment>
-                )
-              }}
-              value={this.state.search}
-              onChange={this.handleChange}
-              />
-            {artistRender}
+            {searchBar()}
+            <Grid container spacing={2} >
+                {artistRender}
+            </Grid>
           </div>
         )
       }
         return (
           <div>
-            <TextField id="outlined-basic"
-              placeholder="Search for an artist"
-              variant="outlined"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon />
-                  </InputAdornment>
-                )
-              }}
-              value={this.state.search}
-              onChange={this.handleChange}
-              />
+            {searchBar()}
           </div>
         )
     } else {
