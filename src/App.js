@@ -15,6 +15,7 @@ class App extends React.Component {
             <Switch>
               <Route path="/login" component = {Login} />
               <Route path="/search" render = {(props) => <Search {...props} searchArtist = {this.props.searchArtist} artists = {this.props.artists}/>} />
+              <Route path="/album/:artistId" render = {(props) => <Search {...props} searchArtist = {this.props.searchArtist} artists = {this.props.artists}/>} />
             </Switch>
         </BrowserRouter>
       </div>

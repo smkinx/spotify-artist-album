@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import queryString from 'query-string';
 import ArtistCard from './artistCard';
 import Grid from '@material-ui/core/Grid';
+import './style.css';
 
 class Search extends React.Component {
 
@@ -36,15 +37,17 @@ class Search extends React.Component {
   }
 
   render() {
+
     console.log(this.props)
 
     if(this.accessToken !== "") {
 
       const searchBar = () => {
         return (
-          <TextField id="outlined-basic"
+          <TextField
             placeholder="Search for an artist"
             variant="outlined"
+            className="search-bar"
             InputProps={{
               startAdornment: (
                 <InputAdornment position="end">
@@ -67,18 +70,18 @@ class Search extends React.Component {
         })
 
         return (
-          <div>
+          <Grid container className="search-container">
             {searchBar()}
-            <Grid container spacing={2} >
+            <Grid container spacing={4} >
                 {artistRender}
             </Grid>
-          </div>
+          </Grid>
         )
       }
         return (
-          <div>
+          <Grid container className="search-container">
             {searchBar()}
-          </div>
+          </Grid>
         )
     } else {
       //send to login

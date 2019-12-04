@@ -1,0 +1,47 @@
+/* Search */
+.search-container .search-bar {
+  background: #fff;
+  margin: 20px auto;
+  min-width: 500px;
+  width: 500px;
+  font-size: 25px;
+  border-radius: 40px;
+}
+
+/* Card */
+.search-container .artist-card {
+  height: 100%;
+  text-align: left;
+  background: #282828;
+  color: #fff;
+}
+
+.search-container .artist-image {
+   padding-top: 150px;
+   width: 100%;
+   background-size:cover;
+}
+
+.search-container .artist-info {
+  min-height: 120px;
+}
+
+.search-container .artist-ratings {
+  color: #1db954;
+}
+
+.search-container .artist-ratings .MuiRating-iconEmpty{
+  color: rgba(255,255,255,0.1);
+}
+
+@media only screen and (min-width: 600px) {
+
+}
+@media only screen and (min-width: 960px) {
+  .search-container .artist-image {
+     padding-top: 350px
+  }
+}
+@media only screen and (min-width: 1280px) {
+
+}
