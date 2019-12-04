@@ -12,19 +12,9 @@ export const login = () => {
 
 
 export const searchArtist = (token, search) => {
-
-  var config = {
-    headers: {'Authorization': "bearer " + "BQBE6mbA-rpBO8HKSCd7f-45pPxkp-xqRxnvJkEIQDvSZud5bJK-ih8lhZJBOH1Ap5a0fOdAwbp67v6lUmHvmBu3b_dta8TDCASO4xjfpOmY1qDJE-zRgigzJFEff4igXNbqA2w"}
-  };
-
-  var bodyParameters = {
-    type: "artist",
-    q: search
-  }
   return dispatch => {
-    axios.get(`https://api.spotify.com/v1/search`,
-      bodyParameters,
-      config
+    axios.get(`https://api.spotify.com/v1/search?type=artist&q=${search}`,
+      { headers: {'Authorization': `Bearer ${token}`}}
     )
     .then((response) => {
       dispatch({

@@ -16,7 +16,7 @@ class App extends React.Component {
         <BrowserRouter >
             <Switch>
               <Route path="/login" component = {Login} />
-              <Route path="/search" render = {() => <Search searchArtist = {this.props.searchArtist}/>} />
+              <Route path="/search" render = {(props) => <Search {...props} searchArtist = {this.props.searchArtist} artists = {this.props.artists}/>} />
             </Switch>
         </BrowserRouter>
       </div>
@@ -26,7 +26,7 @@ class App extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    auth: state.auth
+    artists: state.artists
   };
 }
 
