@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Login from './component/Login/login';
+import Login from './components/Login/login';
 import PrivateRoute from './components/privateRoute'
 
 function App() {
