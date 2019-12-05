@@ -34,7 +34,7 @@ const AlbumCard = (props) => {
                 {props.total_tracks} tracks
               </Typography>
             </div>
-            <Button className="button-album-preview">Preview in Spotify</Button>
+            <Button className="button-album-preview sm-button">Preview in Spotify</Button>
           </CardContent>
       </Card>
     </Link>

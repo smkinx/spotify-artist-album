@@ -14,7 +14,7 @@
 }
 
 .artist-container .album-card:hover .button-album-preview{
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: #1ed760;
 }
 
 .artist-container .album-image {
