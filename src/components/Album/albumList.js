@@ -28,9 +28,6 @@ class AlbumList extends React.Component {
   }
 
   render() {
-    console.log(this.props)
-
-
       if(this.props.albums) {
         let albumRender = this.props.albums.map((artist, index) => {
           return (
@@ -53,7 +50,7 @@ class AlbumList extends React.Component {
         };
 
         return (
-          <Grid container className="artist-container"s>
+          <Grid container className="artist-container">
             <Grid item className="artist-header">
               <Typography variant="h3" gutterBottom>
                 {this.state.artistName}

@@ -44,7 +44,6 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     if(this.props.accessToken !== "") {
 
       const searchBar = () => {
