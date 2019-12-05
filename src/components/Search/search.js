@@ -5,6 +5,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import queryString from 'query-string';
 import ArtistCard from './artistCard';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import './style.css';
 
 class Search extends React.Component {
@@ -25,7 +26,6 @@ class Search extends React.Component {
 
   handleChange(event) {
     this.setState({search : event.target.value});
-
     if(this.state.search.length >= 2){
       this.search();
     }
@@ -48,6 +48,7 @@ class Search extends React.Component {
             variant="outlined"
             className="search-bar"
             InputProps={{
+              className:"search-bar-input",
               startAdornment: (
                 <InputAdornment position="end">
                   <SearchIcon />
@@ -59,6 +60,20 @@ class Search extends React.Component {
             />
         )
       }
+
+      const loadMore = (next) => {
+        if(next) {
+          return (
+            <Button className="button-load-more sm-button" onClick={()=>{
+                this.props.fetchMoreArtists(this.props.accessToken, this.props.search.next)
+              }}>Load more</Button>
+          )
+        } else {
+          return("")
+        }
+      };
+
+
       if(this.props.artists) {
         let artistRender = this.props.artists.map((artist, index) => {
           return (
@@ -74,6 +89,7 @@ class Search extends React.Component {
             <Grid container spacing={4} >
                 {artistRender}
             </Grid>
+            {loadMore(this.props.search.next)}
           </Grid>
         )
       }

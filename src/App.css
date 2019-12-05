@@ -3,3 +3,15 @@
   min-height: calc(100vh - 60px);
   padding: 30px;
 }
+
+.App .button-load-more {
+  background: #1db954;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 20px auto;
+  font-weight: bold;
+}
+
+.App .sm-button:hover {
+  background-color: rgba(255,255,255,0.1);
+}

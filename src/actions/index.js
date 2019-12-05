@@ -4,6 +4,8 @@ export const LOGIN = 'login';
 export const SEARCH_ARTIST = 'search_artists';
 export const FETCH_ALBUMS = 'fetch_albums';
 export const REMOVE_ALBUMS = 'remove_albums';
+export const FETCH_MORE_ARTISTS = "fetch_more_artists"
+export const FETCH_MORE_ALBUMS = "fetch_more_albums"
 
 export const addAuthToken = (token) => {
   return dispatch => {
@@ -55,6 +57,23 @@ export const removeAlbums = () => {
     dispatch({
         type:REMOVE_ALBUMS,
         payload: []
+    })
+  }
+}
+
+export const fetchMoreArtists = (token, url) => {
+  return dispatch => {
+    axios.get(url,
+      { headers: {'Authorization': `Bearer ${token}`}}
+    )
+    .then((response) => {
+      dispatch({
+          type:FETCH_MORE_ARTISTS,
+          payload:response
+      })
+    })
+    .catch((error)=>{
+      console.log(error)
     })
   }
 }
