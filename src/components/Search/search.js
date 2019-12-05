@@ -12,8 +12,7 @@ class Search extends React.Component {
   constructor(){
     super();
     this.state = {
-      search : "",
-      accessToken: ""
+      search : ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
@@ -21,7 +20,7 @@ class Search extends React.Component {
 
   componentDidMount() {
     const values = queryString.parse(this.props.location.hash)
-    this.setState({accessToken: values.access_token})
+    this.props.addAuthToken(values.access_token)
   }
 
   handleChange(event) {
@@ -33,14 +32,14 @@ class Search extends React.Component {
   }
 
   search() {
-    this.props.searchArtist(this.state.accessToken, this.state.search)
+    this.props.searchArtist(this.props.accessToken, this.state.search)
   }
 
   render() {
 
     console.log(this.props)
 
-    if(this.accessToken !== "") {
+    if(this.props.accessToken !== "") {
 
       const searchBar = () => {
         return (
@@ -84,7 +83,9 @@ class Search extends React.Component {
           </Grid>
         )
     } else {
-      //send to login
+      return(
+        <div></div>
+      )
     }
   }
 }

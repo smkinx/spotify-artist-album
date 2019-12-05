@@ -1,0 +1,51 @@
+/* artist */
+.artist-container .artist-bar {
+  background: #fff;
+  margin: 20px auto;
+  min-width: 500px;
+  width: 500px;
+  font-size: 25px;
+  border-radius: 40px;
+}
+
+/* Card */
+.artist-container .album-card {
+  height: 100%;
+  text-align: left;
+  background: #282828;
+  color: #fff;
+}
+
+.artist-container .album-image {
+   padding-top: 150px;
+   width: 100%;
+   background-size:cover;
+}
+
+.artist-container .album-link {
+   text-decoration: none;
+}
+
+.artist-container .album-info {
+  min-height: 120px;
+}
+
+.artist-container .album-ratings {
+  color: #1db954;
+}
+
+.artist-container .album-ratings .MuiRating-iconEmpty{
+  color: rgba(255,255,255,0.1);
+}
+
+@media only screen and (min-width: 600px) {
+
+}
+@media only screen and (min-width: 960px) {
+  .artist-container .album-image {
+     padding-top: 350px
+  }
+}
+@media only screen and (min-width: 1280px) {
+
+}
