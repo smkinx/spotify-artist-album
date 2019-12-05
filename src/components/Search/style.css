@@ -22,6 +22,10 @@
    background-size:cover;
 }
 
+.search-container .artist-link {
+   text-decoration: none;
+}
+
 .search-container .artist-info {
   min-height: 120px;
 }

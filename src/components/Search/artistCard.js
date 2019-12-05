@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
+import { Link } from 'react-router-dom'
 import './style.css'
 
 const ArtistCard = (props) => {
@@ -13,22 +14,24 @@ const ArtistCard = (props) => {
     imageUrl = props.images[2].url;
   }
   return (
-    <Card className="artist-card" elevation={0}>
+    <Link className="artist-link" to={`/artist/${props.id}`}>
+      <Card className="artist-card" elevation={0}>
 
-      <div className="artist-image" style={{backgroundImage: `url(${imageUrl})`}}>
-      </div>
-        <CardContent>
-          <div className="artist-info">
-            <Typography variant="h4" gutterBottom>
-              {props.name}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              {followers} followers
-            </Typography>
-          </div>
-          <Rating name="half-rating" className="artist-ratings" value={ratings} precision={0.1} size="large"/>
-        </CardContent>
-    </Card>
+        <div className="artist-image" style={{backgroundImage: `url(${imageUrl})`}}>
+        </div>
+          <CardContent>
+            <div className="artist-info">
+              <Typography variant="h4" gutterBottom>
+                {props.name}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                {followers} followers
+              </Typography>
+            </div>
+            <Rating name="half-rating" className="artist-ratings" value={ratings} precision={0.1} size="large" readOnly/>
+          </CardContent>
+      </Card>
+    </Link>
   )
 }
 
