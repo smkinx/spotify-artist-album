@@ -1,11 +1,7 @@
 /* artist */
-.artist-container .artist-bar {
-  background: #fff;
-  margin: 20px auto;
-  min-width: 500px;
-  width: 500px;
-  font-size: 25px;
-  border-radius: 40px;
+.artist-container .artist-header {
+  color: #fff;
+  margin-bottom: 40px;
 }
 
 /* Card */
@@ -14,12 +10,19 @@
   text-align: left;
   background: #282828;
   color: #fff;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.artist-container .album-card:hover .button-album-preview{
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 .artist-container .album-image {
    padding-top: 150px;
    width: 100%;
    background-size:cover;
+   background-position: center;
 }
 
 .artist-container .album-link {
@@ -30,8 +33,16 @@
   min-height: 120px;
 }
 
-.artist-container .album-ratings {
-  color: #1db954;
+.artist-container .button-album-preview {
+  background: #1db954;
+  color: #fff;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  font-weight: bold;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .artist-container .album-ratings .MuiRating-iconEmpty{

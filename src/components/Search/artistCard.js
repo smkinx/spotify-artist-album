@@ -14,7 +14,13 @@ const ArtistCard = (props) => {
     imageUrl = props.images[2].url;
   }
   return (
-    <Link className="artist-link" to={`/artist/${props.id}`}>
+    <Link className="artist-link"
+      to={{
+        pathname: `/artist/${props.id}`,
+        state: {
+          artistName: props.name
+        }
+      }}>
       <Card className="artist-card" elevation={0}>
 
         <div className="artist-image" style={{backgroundImage: `url(${imageUrl})`}}>

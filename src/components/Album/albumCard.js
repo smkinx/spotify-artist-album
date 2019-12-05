@@ -2,12 +2,11 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Rating from '@material-ui/lab/Rating';
+import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 import './style.css'
 
 const AlbumCard = (props) => {
-  let ratings = props.popularity / 100 * 5;
   let imageUrl = "https://via.placeholder.com/500";
   if(props.images[1]){
     imageUrl = props.images[1].url;
@@ -35,6 +34,7 @@ const AlbumCard = (props) => {
                 {props.total_tracks}
               </Typography>
             </div>
+            <Button className="button-album-preview">Preview in Spotify</Button>
           </CardContent>
       </Card>
     </Link>

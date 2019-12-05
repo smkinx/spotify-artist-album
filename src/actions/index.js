@@ -3,6 +3,7 @@ import axios from 'axios';
 export const LOGIN = 'login';
 export const SEARCH_ARTIST = 'search_artists';
 export const FETCH_ALBUMS = 'fetch_albums';
+export const REMOVE_ALBUMS = 'remove_albums';
 
 export const addAuthToken = (token) => {
   return dispatch => {
@@ -44,6 +45,16 @@ export const fetchAlbum = (token, id) => {
     })
     .catch((error)=>{
       console.log(error)
+    })
+  }
+}
+
+export const removeAlbums = () => {
+  return dispatch => {
+
+    dispatch({
+        type:REMOVE_ALBUMS,
+        payload: []
     })
   }
 }

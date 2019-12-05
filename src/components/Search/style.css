@@ -17,9 +17,10 @@
 }
 
 .search-container .artist-image {
-   padding-top: 150px;
+   padding-top: 250px;
    width: 100%;
    background-size:cover;
+   background-position: center;
 }
 
 .search-container .artist-link {

@@ -62,7 +62,7 @@ class Search extends React.Component {
       if(this.props.artists) {
         let artistRender = this.props.artists.map((artist, index) => {
           return (
-            <Grid key={`${artist.name}_${index}`} item xl={2} lg={3} sm={6} xs={6}>
+            <Grid key={`${artist.name}_${index}`} item xl={2} lg={3} sm={4} xs={6}>
               <ArtistCard {...artist}/>
             </Grid>
           )
