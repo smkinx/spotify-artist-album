@@ -1,4 +1,7 @@
 /* Search */
+.search-container {
+  min-height: calc(100vh - 60px);
+}
 .search-container .search-bar {
   background: #fff;
   margin: 20px auto 40px;

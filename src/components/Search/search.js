@@ -19,7 +19,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.search = this.search.bind(this);
-    this.searchThrottled = throttle(500, this.search);
+    this.searchThrottled = throttle(1000, this.search);
   }
 
   componentDidMount() {
@@ -81,7 +81,7 @@ class Search extends React.Component {
       };
 
 
-      if(this.props.artists) {
+      if(this.props.artists.length !== 0) {
         let artistRender = this.props.artists.map((artist, index) => {
           return (
             <Grid key={`${artist.name}_${index}`} item xl={2} lg={3} sm={4} xs={6}>
@@ -99,12 +99,14 @@ class Search extends React.Component {
             {loadMore(this.props.search.next)}
           </Grid>
         )
-      }
+      } else {
         return (
-          <Grid container className="search-container">
+          <Grid container alignContent="center" alignItems="center" className="search-container">
             {searchBar()}
           </Grid>
         )
+      }
+
     } else {
       return(
         <div></div>
