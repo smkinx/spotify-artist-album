@@ -26,12 +26,12 @@ const AlbumCard = (props) => {
                 {props.artists[0].name}
               </Typography>
             </div>
-            <div>
+            <div className="album-attr">
               <Typography variant="body2" gutterBottom>
                 {props.release_date}
               </Typography>
               <Typography variant="body2" gutterBottom>
-                {props.total_tracks}
+                {props.total_tracks} tracks
               </Typography>
             </div>
             <Button className="button-album-preview">Preview in Spotify</Button>

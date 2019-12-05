@@ -11,7 +11,6 @@
   background: #282828;
   color: #fff;
   position: relative;
-  padding-bottom: 10px;
 }
 
 .artist-container .album-card:hover .button-album-preview{
@@ -31,6 +30,10 @@
 
 .artist-container .album-info {
   min-height: 120px;
+}
+
+.artist-container .album-attr {
+  padding-bottom: 20px;
 }
 
 .artist-container .button-album-preview {
