@@ -12,7 +12,6 @@ const AlbumCard = (props) => {
     imageUrl = props.images[1].url;
   }
   return (
-    <Link className="album-link" target="_blank" onClick={(event) => {event.preventDefault(); window.open(props.external_urls.spotify);}}>
       <Card className="album-card" elevation={0}>
 
         <div className="album-image" style={{backgroundImage: `url(${imageUrl})`}}>
@@ -34,10 +33,9 @@ const AlbumCard = (props) => {
                 {props.total_tracks} tracks
               </Typography>
             </div>
-            <Button className="button-album-preview sm-button">Preview in Spotify</Button>
+            <Button target="_blank" onClick={(event) => {event.preventDefault(); window.open(props.external_urls.spotify);}} className="button-album-preview sm-button">Preview in Spotify</Button>
           </CardContent>
       </Card>
-    </Link>
   )
 }
 

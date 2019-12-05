@@ -20,18 +20,25 @@ export const addAuthToken = (token) => {
 
 export const searchArtist = (token, search) => {
   return dispatch => {
-    axios.get(`https://api.spotify.com/v1/search?type=artist&q=${search}`,
-      { headers: {'Authorization': `Bearer ${token}`}}
-    )
-    .then((response) => {
-      dispatch({
-          type:SEARCH_ARTISTS,
-          payload:response
+    if(search !== "") {
+      axios.get(`https://api.spotify.com/v1/search?type=artist&q=${search}`,
+        { headers: {'Authorization': `Bearer ${token}`}}
+      )
+      .then((response) => {
+        dispatch({
+            type:SEARCH_ARTISTS,
+            payload:response
+        })
       })
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+      .catch((error)=>{
+        console.log(error)
+      })
+    } else {
+      dispatch({
+          type: REMOVE_ARTISTS,
+          payload: []
+      })
+    }
   }
 }
 
@@ -62,14 +69,6 @@ export const removeAlbums = () => {
   }
 }
 
-export const removeArtists = () => {
-  return dispatch => {
-    dispatch({
-        type:REMOVE_ARTISTS,
-        payload: []
-    })
-  }
-}
 
 export const fetchMoreArtists = (token, url) => {
   return dispatch => {

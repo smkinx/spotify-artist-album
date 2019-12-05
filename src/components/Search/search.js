@@ -19,7 +19,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.search = this.search.bind(this);
-    this.searchThrottled = throttle(1000, this.search);
+    this.searchThrottled = throttle(500, this.search);
   }
 
   componentDidMount() {
@@ -29,21 +29,13 @@ class Search extends React.Component {
 
   handleKeyPress(event) {
     if (event.key === 'Enter') {
-      if(this.state.search.length !== 0) {
-        this.searchThrottled(this.state.search);
-      } else {
-        this.props.removeArtists()
-      }
+      this.searchThrottled(this.state.search);
     }
   }
 
   handleChange(event) {
     this.setState({search : event.target.value}, () => {
-      if(this.state.search.length !== 0){
-        this.searchThrottled(this.state.search);
-      } else {
-        this.props.removeArtists()
-      }
+      this.searchThrottled(this.state.search);
     });
   }
 
@@ -52,6 +44,7 @@ class Search extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     if(this.props.accessToken !== "") {
 
       const searchBar = () => {
