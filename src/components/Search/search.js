@@ -7,6 +7,7 @@ import ArtistCard from './artistCard';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import './style.css';
+import { throttle } from "throttle-debounce";
 
 class Search extends React.Component {
 
@@ -16,7 +17,9 @@ class Search extends React.Component {
       search : ""
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.search = this.search.bind(this);
+    this.searchThrottled = throttle(1000, this.search);
   }
 
   componentDidMount() {
@@ -24,11 +27,24 @@ class Search extends React.Component {
     this.props.addAuthToken(values.access_token)
   }
 
-  handleChange(event) {
-    this.setState({search : event.target.value});
-    if(this.state.search.length >= 2){
-      this.search(event.target.value);
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
+      if(this.state.search.length !== 0) {
+        this.searchThrottled(this.state.search);
+      } else {
+        this.props.removeArtists()
+      }
     }
+  }
+
+  handleChange(event) {
+    this.setState({search : event.target.value}, () => {
+      if(this.state.search.length !== 0){
+        this.searchThrottled(this.state.search);
+      } else {
+        this.props.removeArtists()
+      }
+    });
   }
 
   search(val) {
@@ -36,9 +52,6 @@ class Search extends React.Component {
   }
 
   render() {
-
-    console.log(this.props)
-
     if(this.props.accessToken !== "") {
 
       const searchBar = () => {
@@ -57,6 +70,7 @@ class Search extends React.Component {
             }}
             value={this.state.search}
             onChange={this.handleChange}
+            onKeyPress={this.handleKeyPress}
             />
         )
       }
