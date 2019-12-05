@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from './components/Login/login';
 import Search from './components/Search/search';
+import AlbumList from './components/Album/albumList';
 
 import { searchArtist, fetchAlbum } from './actions'
 
@@ -15,7 +16,7 @@ class App extends React.Component {
             <Switch>
               <Route path="/login" component = {Login} />
               <Route path="/search" render = {(props) => <Search {...props} searchArtist = {this.props.searchArtist} artists = {this.props.artists}/>} />
-              <Route path="/album/:artistId" render = {(props) => <Search {...props} searchArtist = {this.props.searchArtist} artists = {this.props.artists}/>} />
+              <Route path="/album/:artistId" render = {(props) => <AlbumList {...props} fetchAlbum = {this.props.fetchAlbum} artists = {this.props.artists}/>} />
             </Switch>
         </BrowserRouter>
       </div>

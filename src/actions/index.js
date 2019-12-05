@@ -4,9 +4,12 @@ export const LOGIN = 'login';
 export const SEARCH_ARTIST = 'search_artists';
 export const FETCH_ALBUMS = 'fetch_albums';
 
-export const login = () => {
+export const addAuthToken = (token) => {
   return dispatch => {
-    //
+    dispatch({
+      type:LOGIN,
+      payload: token
+    })
   }
 }
 
@@ -28,8 +31,19 @@ export const searchArtist = (token, search) => {
   }
 }
 
-export const fetchAlbum = (artistId) => {
+export const fetchAlbum = (token, id) => {
   return dispatch => {
-    //
+    axios.get(`https://api.spotify.com/v1/artists/${id}/albums`,
+      { headers: {'Authorization': `Bearer ${token}`}}
+    )
+    .then((response) => {
+      dispatch({
+          type:FETCH_ALBUMS,
+          payload:response
+      })
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
   }
 }
