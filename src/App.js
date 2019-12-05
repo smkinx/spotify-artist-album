@@ -6,7 +6,7 @@ import Login from './components/Login/login';
 import Search from './components/Search/search';
 import AlbumList from './components/Album/albumList';
 
-import { searchArtist, fetchAlbum, addAuthToken, removeAlbums, fetchMoreArtists } from './actions'
+import { searchArtist, fetchAlbum, addAuthToken, removeAlbums, fetchMoreArtists, fetchMoreAlbums } from './actions'
 
 class App extends React.Component {
   render() {
@@ -30,6 +30,8 @@ class App extends React.Component {
                 accessToken = {this.props.auth}
                 albums = {this.props.albums}
                 removeAlbums = {this.props.removeAlbums}
+                albumRequest = {this.props.albumRequest}
+                fetchMoreAlbums = {this.props.fetchMoreAlbums}
                 />}
               />
               <Route path="/" component = {Login} />
@@ -50,4 +52,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { searchArtist, fetchAlbum, addAuthToken, removeAlbums, fetchMoreArtists }) (App);
+export default connect(mapStateToProps, { searchArtist, fetchAlbum, addAuthToken, removeAlbums, fetchMoreArtists, fetchMoreAlbums }) (App);

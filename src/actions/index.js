@@ -77,3 +77,20 @@ export const fetchMoreArtists = (token, url) => {
     })
   }
 }
+
+export const fetchMoreAlbums = (token, url) => {
+  return dispatch => {
+    axios.get(url,
+      { headers: {'Authorization': `Bearer ${token}`}}
+    )
+    .then((response) => {
+      dispatch({
+          type:FETCH_MORE_ALBUMS,
+          payload:response
+      })
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+}

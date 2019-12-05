@@ -2,6 +2,7 @@ import React from 'react';
 import AlbumCard from './albumCard';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 class AlbumList extends React.Component {
 
@@ -39,24 +40,37 @@ class AlbumList extends React.Component {
           )
         })
 
-      return (
-        <Grid container className="artist-container"s>
-          <Grid item className="artist-header">
-            <Typography variant="h3" gutterBottom>
-              {this.state.artistName}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              Albums
-            </Typography>
+        const loadMore = (next) => {
+          if(next) {
+            return (
+              <Button className="button-load-more sm-button" onClick={()=>{
+                  this.props.fetchMoreAlbums(this.props.accessToken, this.props.albumRequest.next)
+                }}>Load more</Button>
+            )
+          } else {
+            return("")
+          }
+        };
+
+        return (
+          <Grid container className="artist-container"s>
+            <Grid item className="artist-header">
+              <Typography variant="h3" gutterBottom>
+                {this.state.artistName}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Albums
+              </Typography>
+            </Grid>
+            <Grid container spacing={5}>{albumRender}</Grid>
+            {loadMore(this.props.albumRequest.next)}
           </Grid>
-          <Grid container spacing={5}>{albumRender}</Grid>
-        </Grid>
-      )
-    } else {
-      return (
-        <div></div>
-      )
-    }
+        )
+      } else {
+        return (
+          <div></div>
+        )
+      }
   }
 }
 

@@ -27,12 +27,12 @@ class Search extends React.Component {
   handleChange(event) {
     this.setState({search : event.target.value});
     if(this.state.search.length >= 2){
-      this.search();
+      this.search(event.target.value);
     }
   }
 
-  search() {
-    this.props.searchArtist(this.props.accessToken, this.state.search)
+  search(val) {
+    this.props.searchArtist(this.props.accessToken, val)
   }
 
   render() {
